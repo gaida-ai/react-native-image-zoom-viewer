@@ -6,7 +6,7 @@
     "url": "https://github.com/magicwing/react-native-image-viewer/issues"
   },
   "dependencies": {
-    "react-native-image-pan-zoom": "^1.1.12"
+    "react-native-image-pan-zoom": "git+https://github.com/DCKT/react-native-image-zoom.git"
   },
   "description": "大图浏览",
   "devDependencies": {},
