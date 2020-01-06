@@ -31,13 +31,11 @@ class ImageViewer extends Component {
     this.hasLayout = false;
     // 记录已加载的图片 index
     this.loadedIndex = {};
+    this._isMount = true;
+    this.init(props);
   }
   componentWillUnmount() {
     this._isMount = false;
-  }
-  componentWillMount() {
-    this._isMount = true;
-    this.init(this.props)
   }
   /**
    * Props变更时候初始化
