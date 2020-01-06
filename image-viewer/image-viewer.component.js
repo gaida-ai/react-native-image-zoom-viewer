@@ -31,35 +31,24 @@ class ImageViewer extends Component {
     this.hasLayout = false;
     // 记录已加载的图片 index
     this.loadedIndex = {};
+
+    if (nextProps.imageUrls.length > 0) {
+      this.state.imageSizes = nextProps.imageUrls.map(v => {
+        return {
+          width: v.width || 0,
+          height: v.height || 0,
+          status: 'loading',
+        };
+      });
+      this.state.currentShowIndex = props.index;
+    }
+  }
+  componentDidMount() {
     this._isMount = true;
-    this.init(props);
+    this.jumpTo(this.state.currentShowIndex, false);
   }
   componentWillUnmount() {
     this._isMount = false;
-  }
-  /**
-   * Props变更时候初始化
-   */
-  init(nextProps) {
-    if (nextProps.imageUrls.length === 0) {
-      // 隐藏时候清空
-      return this._isMount && this.setState(new State());
-    }
-    // 给 imageSizes 塞入空数组
-    const imageSizes = nextProps.imageUrls.map(v => {
-      return {
-        width: v.width || 0,
-        height: v.height || 0,
-        status: 'loading',
-      };
-    });
-
-    this._isMount && this.setState({
-      currentShowIndex: nextProps.index,
-      imageSizes,
-    }, () => {
-      this.jumpTo(nextProps.index, false);
-    });
   }
   /**
    * 调到当前看图位置
