@@ -32,8 +32,8 @@ class ImageViewer extends Component {
     // 记录已加载的图片 index
     this.loadedIndex = {};
 
-    if (nextProps.imageUrls.length > 0) {
-      this.state.imageSizes = nextProps.imageUrls.map(v => {
+    if (props.imageUrls.length > 0) {
+      this.state.imageSizes = props.imageUrls.map(v => {
         return {
           width: v.width || 0,
           height: v.height || 0,
